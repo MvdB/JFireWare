@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <system>
+	<ocr path='..\ext\cuneiform\cuneiform.exe' param='-l ger --fax --singlecolumn -o "%TEMP%" "%IMAGE%"' />
+  	<ocrmistake from="Straße" to="Strasse"/>
+  	<ocrmistake from="Strabe" to="Strasse"/>
+  	<ocrmistake from="StraBe" to="Strasse"/>
+  	<ocrmistake from="Stra�e" to="Strasse"/>
+  	<ocrmistake from="straße" to="strasse"/>
+  	<ocrmistake from="strabe" to="strasse"/>
+  	<ocrmistake from="straBe" to="strasse"/>
+  	<ocrmistake from="stra�e" to="strasse"/>
+  	<ocrmistake from="Grt" to="Ort"/>
+  	<ocrmistake from="Schlagv" to="Schlagw"/>
+  	<ocrmistake from="DISPGLISTE" to="DISPOLISTE"/>
+  	<ocrmistake from="—" to="-"/>
+  	<ocrwhitespace toclear="^"/>
+  	<ocrwhitespace toclear=":"/>
+  	<ocrwhitespace toclear="�"/>
+  	<ocrwhitespace toclear="."/>
+  	<img enable='true' path='..\ext\IrfanView\i_view32.exe' param='"%INPUT%" /convert="%OUTPUT%" /silent' />
+  	<stitch enable='true' path='..\ext\TIFFStitch\TIFFStitch.exe' param='"%INPUT%" "%OUTPUT%" 0' />
+  	<pdfpath>..\ext\FoxitReader\FoxitReader.exe</pdfpath>
+  	<pdfparam>-p "%IMAGE%"</pdfparam>
+  	<inputdir>..\work\in\</inputdir>
+  	<!-- Fax 24-10-2010 18;35;5 -->
+  	<imgfilepattern>Fax.*.tif</imgfilepattern>
+<!--   	<imgfilepattern>[\w]* [0-9]{1\,2}-[0-9]{1\,2}-[0-9]{4} [0-9]{1\,2}_[0-9]{1\,2}_[0-9]{1\,2}.tif</imgfilepattern> -->
+  	<archivedir>..\work\faxes\</archivedir>
+  	<outputdir>..\work\pdf\</outputdir>
+  	<spamdir>..\work\spam\</spamdir>
+  	<adminmail>michael@van-den-berg.name</adminmail>
+  	<!-- currently only mysql-databases are supported ('jfireware' used for database, user and password) -->
+  	<followupoffset hours="1" minutes="0"/>
+  </system>
+  <personal>
+   	<mail enable="true" followup="true" auth="true" usessl="false" from="einsatz@ffwgelting.de" password="TSFTSF441" port="25" server="mail.kontent.com" user="ffwgelting_de" />
+   	<printer enable="true" followup="true" count="1" perVehicle="true" />
+   	<sms enable="false" followup="false" msgLength="160" url="http://gateway.smstrade.de/?key=YOUR-DELIVERY-KEY-ABCDE&amp;to=%RECIPIENT%&amp;message=%MESSAGE%&amp;route=basic&amp;from=JFIREWARE"/>
+   	<plzpattern from="^[0-7\,9]{1}" to="8"/>
+  </personal>
+</configuration>

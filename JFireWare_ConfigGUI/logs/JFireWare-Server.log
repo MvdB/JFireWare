@@ -1,0 +1,8 @@
+20.01. 16:14:20 |  INFO - ConfigGUI            - Starting GUI..
+20.01. 16:14:23 |  INFO - EmpfaengerTableModel - Deleting 'bla bla'
+20.01. 16:14:30 | DEBUG - EmpfaengerTableModel - setValueAt(Object Wirth, int 1, int 1)
+20.01. 16:14:32 | DEBUG - EmpfaengerTableModel - setValueAt(Object Christian, int 1, int 2)
+20.01. 16:14:41 | DEBUG - EmpfaengerTableModel - setValueAt(Object cwirth@gmx.de, int 1, int 3)
+20.01. 16:14:41 | DEBUG - EmpfaengerTableModel - setValueAt(Object true, int 1, int 4)
+20.01. 16:14:45 |  INFO - EmpfaengerTableModel - Saving 'Michael van den Berg'
+20.01. 16:14:45 |  INFO - EmpfaengerTableModel - Saving 'Christian Wirth'

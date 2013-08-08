@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <system>
+  	<monitor nr="2" resolutionX="1024" resolutionY="600" showFullscreen="false" undecorated="false"/>	
+  	<sleeptime>3</sleeptime>
+    <map scale="0.45" />
+    <font size="30" />
+    <sound enable="false" file="..\ext\Alarmton.wav" />
+    <displaytimeout hours="0" minutes="30"/>
+    <hookon enable='false' path='..\ext\TVTools\TVOn.exe' param='' />
+  	<hookoff enable='false' path='..\ext\TVTools\TVOff.exe' param='' />
+  </system>
+</configuration>

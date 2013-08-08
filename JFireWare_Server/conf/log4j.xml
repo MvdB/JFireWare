@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+ <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+   <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern" value="%d{dd.MM. HH:mm:ss} | %5p - %-20c{1} - %m%n"/>
+
+	</layout>
+  </appender>
+  <appender name="file" class="org.apache.log4j.FileAppender">
+    <param name="file" value="../logs/JFireWare-Server.log" />
+    <param name="append" value="false" />
+    <param name="encoding" value="UTF-8" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d{dd.MM. HH:mm:ss} | %5p - %-20c{1} - %m%n"/>
+	</layout>
+  </appender>
+  
+  <logger name="de.edvdb" additivity="true">
+    <level value="debug"/>
+    <appender-ref ref="file" />
+  </logger>
+  
+  <root>
+    <priority value="error"></priority>
+	<appender-ref ref="stdout"/>
+  </root>
+</log4j:configuration>

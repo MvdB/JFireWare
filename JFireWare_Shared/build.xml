@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<project name="Ant-Test" default="do_all" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="src.dir.shared" location="src" />
+	<property name="src.dir.client" location="../JFireWare_Client/src" />
+	<property name="src.dir.server" location="../JFireWare_Server/src" />
+	<property name="lib.dir.shared" location="lib" />
+	<property name="lib.dir.wrapper" location="wrapper/lib" />
+	<property name="ext.dir.client" location="../JFireWare_Client/ext" />
+	<property name="ext.dir.server" location="../JFireWare_Server/ext" />
+	<property name="conf.dir.client" location="../JFireWare_Client/conf" />
+	<property name="conf.dir.server" location="../JFireWare_Server/conf" />
+	<property name="conf.dir.wrapper" location="wrapper/conf" />
+	<property name="conf.dir.dist" location="conf4dist" />
+	<property name="bin.dir.wrapper" location="wrapper/bin" />
+	<property name="bin.dir.shared" location="bin" />
+	<property name="bin.dir.client" location="../JFireWare_Client/bin" />
+	<property name="bin.dir.server" location="../JFireWare_Server/bin" />
+		
+	
+	<property name="build.dir" location="build" />
+	<property name="build.dir.client" location="build/client" />
+	<property name="build.dir.server" location="build/server" />
+	<property name="dist.dir.temp" location="dist/temp" />
+	<property name="dist.dir.final" location="dist/final" />
+	
+    <fileset id="resources.shared" dir="${src.dir.shared}">
+        <include name="**/*.properties"/>
+        <include name="**/*.gif"/>
+        <include name="**/*.jpg"/>
+        <include name="**/*.png"/>
+    </fileset>
+	
+    <fileset id="resources.client" dir="${src.dir.client}">
+        <include name="**/*.properties"/>
+        <include name="**/*.gif"/>
+        <include name="**/*.jpg"/>
+        <include name="**/*.png"/>
+    </fileset>
+	
+	<path id="lib.shared">
+		<fileset dir="${lib.dir.shared}">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean-final">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir.temp}" />
+	</target>
+	
+	<target name="clean-bin">
+		<delete dir="${bin.dir.client}" />
+		<delete dir="${bin.dir.shared}" />
+		<delete dir="${bin.dir.server}" />
+	</target>
+	
+	<target name="clean-internal">
+		<delete dir="${build.dir.client}" />
+		<delete dir="${build.dir.server}" />
+		<delete dir="${dist.dir.temp}" />
+		<delete dir="${dist.dir.final}" />
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build.dir.client}" />
+		<mkdir dir="${build.dir.server}" />
+		<mkdir dir="${dist.dir.temp}" />
+		<mkdir dir="${dist.dir.final}" />
+	</target>
+
+	<target name="compile-client" depends="clean-internal, makedir">
+		<javac srcdir="${src.dir.shared};${src.dir.client}" destdir="${build.dir.client}" classpathref="lib.shared"/>
+	</target>
+	<target name="jar-client" depends="compile-client">
+		<jar destfile="${dist.dir.temp}\JFireWare-Client.jar" basedir="${build.dir.client}">
+			<fileset refid="resources.client"/>
+			<fileset refid="resources.shared"/>
+		</jar>
+	</target>
+
+	<target name="compile-server" depends="clean-internal, makedir">
+		<javac srcdir="${src.dir.shared};${src.dir.server}" destdir="${build.dir.server}" classpathref="lib.shared"/>
+	</target>
+	<target name="jar-server" depends="compile-server">
+		<jar destfile="${dist.dir.temp}\JFireWare-Server.jar" basedir="${build.dir.server}">
+			<fileset refid="resources.shared"/>
+		</jar>
+	</target>
+			
+	<target name="copy-libs">
+		<copy todir="${dist.dir.final}/lib">
+			<fileset dir="${lib.dir.shared}" />
+		</copy>
+	</target>			
+
+	<target name="copy-externals">
+		<copy todir="${dist.dir.final}/ext">
+			<fileset dir="${ext.dir.server}" />
+		</copy>
+		<copy todir="${dist.dir.final}/ext">
+			<fileset dir="${ext.dir.client}" />
+		</copy>
+	</target>
+
+	<target name="copy-config">
+		<copy todir="${dist.dir.final}/conf">
+			<fileset dir="${conf.dir.dist}" />
+		</copy>
+	</target>
+	
+	<target name="copy-bats">
+		<copy todir="${dist.dir.final}/bin">
+			<fileset dir="." includes="*.bat" />
+		</copy>
+	</target>
+	
+	<target name="copy-exec">
+		<copy todir="${dist.dir.final}">
+			<fileset dir="${dist.dir.temp}" includes="*.jar" />
+		</copy>
+	</target>
+	
+	<target name="copy-wrapper">
+		<copy todir="${dist.dir.final}/bin">
+			<fileset dir="${bin.dir.wrapper}" />
+		</copy>
+		<copy todir="${dist.dir.final}/conf">
+			<fileset dir="${conf.dir.wrapper}" />
+		</copy>
+		<copy todir="${dist.dir.final}/lib">
+			<fileset dir="${lib.dir.wrapper}" />
+		</copy>
+		<mkdir dir="${dist.dir.final}/logs"/>
+	</target>
+	
+	<target name="obfuscation" depends="jar-client, jar-server">
+		<taskdef resource="proguard/ant/task.properties" classpath="lib-tools/proguard.jar" />
+		<proguard configuration="obfuscation.pro"/>
+	</target>		
+		
+	<target name="do_all" depends="jar-client, jar-server, copy-exec, copy-libs, copy-externals, copy-config, copy-bats, copy-wrapper">
+		<antcall target="clean-final" />
+		<description>Main target</description>
+	</target>
+	<target name="do_all_obfuscated" depends="jar-client, jar-server, obfuscation, copy-libs, copy-externals, copy-config, copy-bats, copy-wrapper">
+		<antcall target="clean-final" />
+		<description>Main target</description>
+		</target>
+</project>

@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<project name="JFireWare-Server" default="main" basedir=".">
+	<!-- Sets variables which can later be used. -->
+	<!-- The value of a property is accessed via ${} -->
+	<property name="zip.name" value="JFireWare-Server.zip" />
+	<property name="jar.name" value="jfw-server.jar" />
+	<property name="mainclass" value="de.edvdb.ffw.Server" />
+	<property name="client.src.dir" location="src" />
+	<property name="shared.src.dir" location="../JFireWare_Shared/src" />
+	<property name="lib.dir" location="../JFireWare_Shared/lib" />
+	<property name="build.dir" location="build" />
+	<property name="conf.dir" location="conf" />
+	<property name="ext.dir" location="ext" />
+	<property name="tmp.dir" location="../tmp" />
+	<property name="dist.dir" location="../distServer" />
+	
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+    
+	<!-- Deletes the existing build, docs and dist directory-->
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${tmp.dir}" />
+	</target>
+
+	<!-- Creates the  build, docs and dist directory-->
+	<target name="makedir">
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${tmp.dir}" />
+		<mkdir dir="${dist.dir}" />
+		<mkdir dir="${tmp.dir}/bin" />
+	</target>
+
+	<!-- Compiles the java code (including the usage of library for JUnit -->
+	<target name="compile" depends="clean, makedir">
+		<javac destdir="${build.dir}" classpathref="classpath">
+			<src path="${shared.src.dir}" />
+			<src path="${client.src.dir}" />
+		</javac>
+	</target>
+
+	<!--Creates the deployable jar file  -->
+	<target name="jar" depends="compile">
+		<jar destfile="${tmp.dir}/bin/${jar.name}" basedir="${build.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${mainclass}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="copy" depends="jar">
+		  <copy todir="${tmp.dir}/lib">
+		    <fileset dir="${lib.dir}"/>
+		  </copy>
+		  <copy todir="${tmp.dir}/conf">
+		    <fileset dir="${conf.dir}"/>
+		  </copy>
+		  <copy todir="${tmp.dir}/ext">
+		    <fileset dir="${ext.dir}"/>
+		  </copy>
+	<copy file="start.bat" tofile="${tmp.dir}/bin/start.bat"></copy>
+	</target>
+	
+	<target name="zip" depends="copy">
+	  <zip destfile="${dist.dir}/${zip.name}"
+	       basedir="${tmp.dir}"
+	  />
+	</target>
+		
+	<target name="main" depends="compile, jar, copy, zip, clean">
+		<description>Main target</description>
+	</target>
+
+</project>

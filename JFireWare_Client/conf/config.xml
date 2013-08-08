@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <system>
+    <hibernateconf>..\conf\hibernate.cfg.xml</hibernateconf>
+    <tempdir>..\work\tmp\</tempdir>	
+  	<sleeptime>3</sleeptime>
+  	<!-- roadmap, satellite, hybrid -->
+  	<maptype detail="hybrid" overview="roadmap"/>
+  	<mapprovider>OSM</mapprovider>
+  	<mapsize>800x800</mapsize>
+  </system>
+  <personal>
+   	<adresse hausnummer="45" ort="Pliening" plz="85652" strasse="Geltinger Strasse" lng="11.8070446" lat="48.1963681">Gelting</adresse>
+  </personal>
+</configuration>

@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+File  : 'about.txt' - Info about IrfanView
+Author: Irfan Skiljan
+E-Mail: irfanview@gmx.net
+WWW   : http://www.irfanview.com
+-------------------------------------------------------------------------------
+
+What is IrfanView ?
+
+IrfanView is a very fast, compact and innovative FREEWARE image viewer/converter
+for Windows 9x/ME/NT/2000/XP/2003/Vista/Windows 7.
+
+IrfanView is fast and small, with extremely low system resources requirements.
+It is trying to be simple for beginners and powerful for professionals.
+
+Supported file formats:
+AIF, ANI/CUR, ASF, AU/SND, AVI, AWD, B3D, BLP, BMP/DIB, CAD formats, CLP, DDS, 
+Dicom/ACR, DJVU, ECW, EMF/WMF, EPS/PS/PDF/AI, EXR, FITS, FPX (FlashPix), FSH, G3,
+GIF, HDR, HDP/WDP, ICO/ICL/EXE/DLL, IFF/LBM, IMG (GEM), JLS, JPG2000, JPG, JPM,
+KDC, LDF, LWF, MED, MID/RMI, MNG/JNG,OV, MP3, MPG, MrSID, NLM/NOL/NGG, OGG, 
+PBM/PGM/PPM, PCX/DCX, PhotoCD, PNG, PSD, PSP, PVR, RAS/SUN, RAW, Real Audio (RA),
+RLE, SFF, SFW, SGI/RGB, SWF/FLV, TGA, TIF, TTF, TXT, WAD, WAV, WBMP, WSQ, XBM,
+XPM, CRW/CR2, VTF, DNG, NEF, ORF, RAF, MRW, DCR, X3F, PEF, SRF, EFF, DXF, DWG,
+HPGL, CGM, SVG, WBC/WBZ, etc.
+ 
+Some features of IrfanView:
+Multi language support, Thumbnail option, slideshow, fast directory browsing,
+batch conversion/editing, multipage editing, file search, email, print,
+Paint plugin - to paint lines, circles, arrows, straighten image etc.,
+support for color profiles, change color depth, scanning, OCR, cut/crop, IPTC edit,
+screen capturing, lossless JPG operations, effects (sharpen, blur, Adobe Photoshop filters),
+EXE/SCR creating, Unicode support, many hotkeys, many command line options, 50+ plugins ...
+
+Microsoft Media Player PlugIn: allows IrfanView to read following
+formats: ASF, AU/SND/AIF, AVI, MID/RMI, MOV, MP3, MPG/MPEG, WAV, WMA, WMV. 
+Support for Apple QuickTime (PlugIn): allows IrfanView to read following
+formats: MOV, QTIF, Mac PICT, FLI/FLC.
+
+IrfanView was the first Windows graphic viewer (worldwide) with Animated-GIF 
+support !
+
+FREEWARE for non commercial use !
+
+Enjoy ! :-)
+
+-------------------------------------------------------------------------------
+IrfanView software is provided "as-is". 
+No warranty of any kind is expressed or implied. 
+-------------------------------------------------------------------------------

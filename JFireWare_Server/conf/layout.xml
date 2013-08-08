@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+  <layout>
+  	<!-- mögliche Feld-IDs sind Strasse, Hausnummer, PLZ, Ort, Fahrzeug, Gerät und Schlagwort -->
+   	<field endPattern="Haus" extendDown="false" extendRight="true" findPattern="Strasse" id="Strasse" index="1" isAlphaOnly="false" lineOffset="0" startPattern="Strasse" excludeStartpattern="true" unique="true"/>
+  	<field endPattern="" extendDown="false" extendRight="false" findPattern="Strasse" id="Hausnummer" index="1" isAlphaOnly="false" lineOffset="0" startPattern="Haus-Nr" excludeStartpattern="true"  unique="true"/>
+  	<field endPattern="-" extendDown="false" extendRight="false" findPattern="Ort" id="PLZ" index="1" isAlphaOnly="false" lineOffset="0" startPattern="Ort" excludeStartpattern="true"  unique="true"/>
+  	<field endPattern="" extendDown="false" extendRight="true" findPattern="Ort" id="Ort" index="1" isAlphaOnly="true" lineOffset="0" startPattern="-" excludeStartpattern="true"  unique="true"/>
+  	<!--<field endPattern="" extendDown="false" extendRight="true" findPattern="FL Pfeffenhausen" id="Fahrzeug" index="1" isAlphaOnly="false" lineOffset="0" startPattern="FL" excludeStartpattern="false"  unique="false"/>-->
+  	<field endPattern="" extendDown="false" extendRight="true" findPattern="FL Gelting" id="Fahrzeug" index="1" isAlphaOnly="false" lineOffset="0" startPattern="FL" excludeStartpattern="false"  unique="false"/>
+  	<field endPattern="" extendDown="false" extendRight="true" findPattern="FF +FR " id="Zustaendigkeit" index="0" isAlphaOnly="false" lineOffset="0" startPattern=" F" excludeStartpattern="false"  unique="false"/>
+  	<!--<field endPattern="" extendDown="false" extendRight="true" findPattern="FL Pfeffenhausen" id="Gerät" index="3" isAlphaOnly="false" lineOffset="1" startPattern="" excludeStartpattern="true"  unique="false"/>-->
+  	<field endPattern="" extendDown="false" extendRight="true" findPattern="FL Gelting" id="Gerät" index="3" isAlphaOnly="false" lineOffset="1" startPattern="" excludeStartpattern="true"  unique="false"/>
+  	<field endPattern="" extendDown="false" extendRight="true" findPattern="Schlagw" id="Schlagwort" index="1" isAlphaOnly="false" lineOffset="0" startPattern="Schlagw" excludeStartpattern="true"  unique="true"/>
+  	<field endPattern="DISPOLISTE" extendDown="true" extendRight="true" findPattern="BEMERKUNG" id="Bemerkung" index="1" isAlphaOnly="false" lineOffset="1" startPattern="" excludeStartpattern="true"  unique="false"/>
+  </layout>
+</configuration>
